@@ -3,8 +3,9 @@
 #include <conio.h>
 
 List L;
-address P;
+address P,Q;
 infotype x;
+int pil,pil1;
 int index_ID;
 
 void menu();
@@ -114,9 +115,10 @@ void runMenu(int menu) {
     case 2:
         // insert last music
         //-------------your code here-------------
-        cout<<"UNDER MAIN TENIS"<<endl;
-
-        //----------------------------------------
+        P = inputMusic();
+        insertLast(L,P);
+        cout<<"press enter";getche();
+        break;        //----------------------------------------
         cout<<"press enter";getche();
         break;
     case 3:
@@ -132,7 +134,9 @@ void runMenu(int menu) {
     case 5:
         // play last music
         //-------------your code here-------------
-        cout<<"UNDER MAIN TENIS"<<endl;
+        // play last music
+        P = last(L);
+        playMusic(P);
 
         //----------------------------------------
         break;
@@ -151,8 +155,12 @@ void runMenu(int menu) {
     case 7:
         // search music by ID
         //-------------your code here-------------
-        cout<<"UNDER MAIN TENIS"<<endl;
-
+        cout<<"input music filename (.wav) : ";
+        cin>>x.ID;
+        P = findElmByName(L, x);
+        if(P != NULL){
+            cout<<"music found"<<endl;
+        }
         //----------------------------------------
         cout<<"press enter";getche();
         break;
@@ -172,8 +180,10 @@ void runMenu(int menu) {
     case 10:
         // play previous music
         //-------------your code here-------------
-        cout<<"UNDER MAIN TENIS"<<endl;
-
+            if(P!=NULL) {
+            P = prev(P);
+            playMusic(P);
+        }
         //----------------------------------------
         break;
     case 11:
